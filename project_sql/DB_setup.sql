@@ -2,8 +2,8 @@
  - Setting up the data base to work on.
  - Creating tables.
  */
+CREATE DATABASE database_name;
 --? The company_dim (company information) table
-CREATE DATABASE data_jobs;
 CREATE TABLE company_dim (
     company_id SERIAL PRIMARY KEY,
     company_name TEXT,
@@ -28,21 +28,6 @@ COPY skills_dim
 FROM 'D:\S.I\programming\Videos\course\DB\sql_project_data_jobs\csv_files\skills_dim.csv' WITH(
         FORMAT csv,
         HEADER true,
-        ENCODING 'UTF8',
-        DELIMITER ','
-    );
---? The skills_job_dim (skill id, job id) connection table
-DROP TABLE skills_job_dim;
-CREATE TABLE skills_job_dim (
-    job_id INT,
-    FOREIGN KEY (job_id) REFERANCES job_postings(job_id),
-    skill_id INT,
-    FOREIGN KEY (skill_id) REFERANCES skills_dim(skill_id),
-);
-COPY skills_job_dim
-FROM 'D:\S.I\programming\Videos\course\DB\sql_project_data_jobs\csv_files\skills_job_dim.csv' WITH(
-        FORMAT csv,
-        HEADER True,
         ENCODING 'UTF8',
         DELIMITER ','
     );
@@ -71,5 +56,19 @@ FROM 'D:\S.I\programming\Videos\course\DB\sql_project_data_jobs\csv_files\job_po
         FORMAT csv,
         ENCODING 'UTF8',
         HEADER true,
+        DELIMITER ','
+    );
+--? The skills_job_dim (skill id, job id) connection table
+CREATE TABLE skills_job_dim (
+    job_id INT,
+    FOREIGN KEY (job_id) REFERENCES job_postings(job_id),
+    skill_id INT,
+    FOREIGN KEY (skill_id) REFERENCES skills_dim(skill_id)
+);
+COPY skills_job_dim
+FROM 'D:\S.I\programming\Videos\course\DB\sql_project_data_jobs\csv_files\skills_job_dim.csv' WITH(
+        FORMAT csv,
+        HEADER True,
+        ENCODING 'UTF8',
         DELIMITER ','
     );
