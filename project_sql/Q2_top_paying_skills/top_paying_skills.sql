@@ -2,7 +2,8 @@
  - Here we try to find the skills required in the job list found in Q1
  */
 --! Using the table resulting from Q1 answer
-SELECT *
+SELECT sd.skills,
+    COUNT(*)
 FROM job_postings jp
     JOIN company_dim cd USING (company_id)
     JOIN skills_job_dim skd USING (job_id)
@@ -31,3 +32,6 @@ WHERE jp.job_location = 'Anywhere'
         ORDER BY COUNT(*) DESC
         LIMIT 50
     )
+GROUP BY sd.skills
+HAVING count(*) >= 250
+ORDER BY count DESC
