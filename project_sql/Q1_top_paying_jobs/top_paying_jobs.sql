@@ -66,7 +66,7 @@ top50_remote AS (
     FROM all_top_paying_jobs
     WHERE job_location = 'Anywhere'
     LIMIT 50
-), --? Top 50 jobs -> gcc companies:
+), --? Jobs -> from the top 50 gcc companies:
 top50_gcc AS (
     SELECT company_name
     FROM all_top_paying_jobs
