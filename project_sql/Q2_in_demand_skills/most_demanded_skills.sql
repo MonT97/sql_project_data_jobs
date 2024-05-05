@@ -1,8 +1,12 @@
 /*
- - Here we try to find the in demand skills required in the job list found in Q1
+ Q: What are the most in demand skills within the top100 jobs?
+ - Clean the data like in Q1.
+ - Display the data meaningfully.
+ - Order and group the result in terms of skills and frequancy of said skills.
  */
 --! Using the table resulting from Q1 answer
-SELECT sd.skills,
+SELECT sd.skill_id,
+    sd.skills,
     COUNT(*)
 FROM job_postings jp
     JOIN company_dim cd USING (company_id)
@@ -37,6 +41,6 @@ WHERE jp.job_title_short = 'Data Analyst'
             LIMIT 50
         )
     )
-GROUP BY sd.skills
+GROUP BY sd.skill_id
 HAVING count(*) >= 250
 ORDER BY count DESC

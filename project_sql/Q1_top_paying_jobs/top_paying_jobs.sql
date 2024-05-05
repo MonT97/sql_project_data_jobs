@@ -1,6 +1,7 @@
 /*
  Q: What are the top paying jobs?
  - Identify the top paying roles for a Data Analyst in the GCC area or remote roles.
+ - Filter the data to get the top 50 paying companies that offer remote Data Analyst roles and add the top 50 companies that offer data analyst roles in the GCC area scence the dataset lackes the relevant info (annual salary).
  - Remove irrelevant data.
  */
 --! This is all jobs (remote+GCC):

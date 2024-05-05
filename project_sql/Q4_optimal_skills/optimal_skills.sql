@@ -1,14 +1,16 @@
 /*
- Q: What are the skills associated with high paying roles?
- - Filter like in Q1.
- - Unfortunately almost all the roles in the GCC area doesn't specify any salary we have to        discard them!.
+ Q: What are the optimal skills a.k.a high pay and high demand?
+ - Filter the data like in Q1.
+ - Combine the result in meaningful way.
+ - The lack of salary for the GCC roles within the data set limit thier usefulness here.
  */
 SELECT sd.skill_id,
     sd.skills,
     TO_CHAR(
         ROUND(AVG(jp.salary_year_avg), 2),
         '999,999,999.00$'
-    ) avg_annual_salary
+    ) avg_annual_salary,
+    COUNT(*) demand
 FROM job_postings jp
     JOIN company_dim cd USING (company_id)
     JOIN skills_job_dim sjd USING (job_id)
@@ -27,4 +29,6 @@ WHERE jp.job_title_short = 'Data Analyst'
         )
     )
 GROUP BY sd.skill_id
-ORDER BY avg_annual_salary DESC
+HAVING COUNT(*) >= 25
+ORDER BY avg_annual_salary DESC,
+    demand DESC
