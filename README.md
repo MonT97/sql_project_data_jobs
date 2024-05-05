@@ -15,6 +15,10 @@
 - **skills_dim.csv**: Skills dimension data.
 - **skills_job_dim.csv**: Mapping of skills to job postings.
 
+## Database Diagram:
+  ![Screenshot 2024-05-06 010724](https://github.com/MonT97/sql_project_data_jobs/assets/75716748/221efc21-f900-4a80-bea8-b8c92693e893)
+  created using this [tool](https://dbdiagram.io/home)!.
+
 ## SQL Queries:
 - **Q1_top_paying_jobs**: Identifies highest paying jobs.
 - **Q2_in_demand_skills**: Analyzes skills in high demand.
