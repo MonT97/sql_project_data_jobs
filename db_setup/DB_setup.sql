@@ -2,7 +2,7 @@
  - Setting up the data base to work on.
  - Creating tables.
  */
-CREATE DATABASE database_name;
+-- CREATE DATABASE database_name;
 --? The company_dim (company information) table
 CREATE TABLE company_dim (
     company_id SERIAL PRIMARY KEY,
